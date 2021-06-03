@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reservation</title>
+    <style type="text/css">
+ div.people {
+    display: flex;
+            justify-content: left;
+            align-items: center;
+            border-radius: 40px;
+            padding: 0;
+        }
+        div label {
+            display: block;
+            margin: 10px 0;
+        }
+        </style>
+</head>
+<?php
+session_start();
+    if(isset($_POST["submit"])){ 
+        
+        $pplNum = $_POST["pplNum"];
+
+        echo"<form method = \"post\" action = \"printReservation.php\">";
+        echo"<input name=\"pplNum\" value=\"$pplNum\" hidden>";
+        echo"<div class=\"people\">";
+
+        for($i = 0; $i < $pplNum; $i++){
+            echo ('
+               <div>
+            <label for = "name"> Name </label>
+            <input type = "text" name = "name">
+            <br>
+            <label for = "surname"> Surname </label>
+            <input type = "text" name="surname">
+            <br><br>
+            </div>
+            ');
+        }
+        echo (' 
+        </div>
+        <label for = "cardNumber"> Credit Card Number </label>
+        <br>
+        <input type = "text" name = "cardNumber">
+        <br>
+        <br>
+        <label for = "email"> email </label>
+        <br>
+        <input type = "email" name = "email">
+        <br>
+        <br>
+        <label for = "arrival"> Check In </label>
+        <br>
+        <input type = "date" name = "arrival">
+        <br>
+        <br>
+        <label for = "leave"> Check Out </label>
+        <br>
+        <input type = "date" name = "leave"> 
+        <br>
+        <input type = "submit" name = "submit" value="Submit">
+        ');
+    }
+?>
+</body>
+
+</html>
